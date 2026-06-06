@@ -16,6 +16,8 @@ const allowedOrigins = [
     "https://clinic-git-master-karan7389s-projects.vercel.app",
   "http://localhost:3000",
   "https://clinic-k0994g57e-karan7389s-projects.vercel.app",
+  "https://clinic-frontend-lac.vercel.app",
+  "https://clinic-frontend-production-d0bf.up.railway.app",
   "http://127.0.0.1:3000",
 ];
 
