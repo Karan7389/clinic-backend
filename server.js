@@ -11,6 +11,7 @@ const app = express();
 // ── CORS ──────────────────────────────────────────────────────────────────────
 const allowedOrigins = [
   process.env.CLIENT_URL || "http://localhost:3000",
+  "https://crown-dental.in",
    "https://clinic-production-41e8.up.railway.app",
   "https://clinic-khaki-one.vercel.app",
     "https://clinic-git-master-karan7389s-projects.vercel.app",
