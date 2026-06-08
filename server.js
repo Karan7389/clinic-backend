@@ -10,17 +10,10 @@ const app = express();
 
 // ── CORS ──────────────────────────────────────────────────────────────────────
 const allowedOrigins = [
-  process.env.CLIENT_URL || "http://localhost:3000",
+  process.env.CLIENT_URL || 
   "https://crown-dental.in",
-  "https://crown-dental.in",
-   "https://clinic-production-41e8.up.railway.app",
-  "https://clinic-khaki-one.vercel.app",
-    "https://clinic-git-master-karan7389s-projects.vercel.app",
-  "http://localhost:3000",
-  "https://clinic-k0994g57e-karan7389s-projects.vercel.app",
-  "https://clinic-frontend-lac.vercel.app",
-  "https://clinic-frontend-production-d0bf.up.railway.app",
-  "http://127.0.0.1:3000",
+  "https://Crown-dental.in",
+  
 ];
 
 app.use(
