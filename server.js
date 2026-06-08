@@ -12,6 +12,7 @@ const app = express();
 const allowedOrigins = [
   process.env.CLIENT_URL || 
   "https://crown-dental.in",
+   "https://www.crown-dental.in",
   "https://Crown-dental.in",
   
 ];
