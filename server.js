@@ -11,10 +11,10 @@ const app = express();
 // ── CORS ──────────────────────────────────────────────────────────────────────
 const allowedOrigins = [
   process.env.CLIENT_URL || 
-  "https://crown-dental.in",
-   "https://www.crown-dental.in",
-  "https://Crown-dental.in",
-  
+ "https://crown-dental.in",
+  "https://www.crown-dental.in",
+  "http://localhost:3000",
+  "http://localhost:5173",
 ];
 
 app.use(
