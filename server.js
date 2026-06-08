@@ -12,6 +12,7 @@ const app = express();
 const allowedOrigins = [
   process.env.CLIENT_URL || 
  "https://crown-dental.in",
+  "clinic-frontend-production-d0bf.up.railway.app",
   "https://www.crown-dental.in",
   "http://localhost:3000",
   "http://localhost:5173",
