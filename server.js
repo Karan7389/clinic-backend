@@ -9,20 +9,36 @@ const path = require("path");
 const app = express();
 
 // ── CORS ──────────────────────────────────────────────────────────────────────
-const allowedOrigins = [
-  process.env.CLIENT_URL || 
- "https://crown-dental.in",
-  "https://clinic-frontend-production-4032.up.railway.app",
-  "clinic-frontend-production-d0bf.up.railway.app",
-  "https://www.crown-dental.in",
-  "http://localhost:3000",
-  "http://localhost:5173",
-];
+// All allowed origins come from environment variables (no hardcoding)
+const buildAllowedOrigins = () => {
+  const origins = [];
+
+  // Primary client URL (e.g. https://crown-dental.in)
+  if (process.env.CLIENT_URL) origins.push(process.env.CLIENT_URL);
+
+  // Secondary URLs (comma-separated in env)
+  if (process.env.CLIENT_URLS) {
+    process.env.CLIENT_URLS.split(",").forEach((u) => {
+      const trimmed = u.trim();
+      if (trimmed) origins.push(trimmed);
+    });
+  }
+
+  // Always allow localhost in development
+  if (process.env.NODE_ENV !== "production") {
+    origins.push("http://localhost:3000");
+    origins.push("http://localhost:5173");
+  }
+
+  return origins;
+};
+
+const allowedOrigins = buildAllowedOrigins();
 
 app.use(
   cors({
     origin: (origin, cb) => {
-      // Allow server-to-server calls (Postman, etc.) and listed origins
+      // Allow server-to-server calls (Postman / health checks) and listed origins
       if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
       cb(new Error(`CORS policy: origin ${origin} not allowed`));
     },
@@ -64,7 +80,7 @@ app.use((err, _req, res, _next) => {
 });
 
 // ── MongoDB + start ───────────────────────────────────────────────────────────
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 
 mongoose
   .connect(process.env.MONGO_URI)
